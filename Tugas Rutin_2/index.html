@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portofolio pribadi Gracia Meilanie Sinaga, mahasiswa Ilmu Komputer Universitas Negeri Medan.">
+    <title>Gracia Meilanie - Portofolio Pribadi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ===== HEADER + NAV (Flexbox #1) ===== -->
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__brand" href="#profil">
+                <span class="site-header__brand-mark">GM</span>
+                <span class="site-header__brand-text">
+                    <strong class="site-header__name">Portofolio Gracia</strong>
+                    <small class="site-header__tagline">Mahasiswa — Universitas Negeri Medan</small>
+                </span>
+            </a>
+
+            <nav class="nav" aria-label="Navigasi utama">
+                <ul class="nav__list">
+                    <li class="nav__item"><a class="nav__link nav__link--active" href="#profil">Profil</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#pendidikan">Pendidikan</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#hobi">Hobi</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#kontak">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== LAYOUT UTAMA (CSS Grid) ===== -->
+    <div class="layout">
+
+        <!-- ----- SIDEBAR ----- -->
+        <aside class="sidebar" aria-label="Ringkasan profil">
+            <div class="profile-card">
+                <img class="profile-card__photo" src="Poto%20Profil.jpg"
+                    alt="Foto profil Gracia Meilanie sedang tersenyum di depan kamera">
+                <h2 class="profile-card__name">Gracia Meilanie Sinaga</h2>
+                <p class="profile-card__role">S1 Ilmu Komputer &middot; 2025</p>
+
+                <!-- Flexbox #2: daftar meta -->
+                <ul class="meta-list">
+                    <li class="meta-list__item">
+                        <span class="meta-list__label">Kampus</span>
+                        <span class="meta-list__value">UNIMED</span>
+                    </li>
+                    <li class="meta-list__item">
+                        <span class="meta-list__label">Kota</span>
+                        <span class="meta-list__value">Medan</span>
+                    </li>
+                    <li class="meta-list__item">
+                        <span class="meta-list__label">Status</span>
+                        <span class="meta-list__value">Mahasiswa aktif</span>
+                    </li>
+                </ul>
+            </div>
+
+            <section class="sidebar__block" aria-labelledby="judul-skill">
+                <h2 class="sidebar__title" id="judul-skill">Sedang Dipelajari</h2>
+                <!-- Flexbox #3: tag yang membungkus otomatis -->
+                <ul class="tag-list">
+                    <li class="tag-list__item">HTML5</li>
+                    <li class="tag-list__item">CSS Grid</li>
+                    <li class="tag-list__item">Flexbox</li>
+                    <li class="tag-list__item">Database</li>
+                    <li class="tag-list__item">Algoritma</li>
+                </ul>
+            </section>
+        </aside>
+
+        <!-- ----- KONTEN UTAMA ----- -->
+        <main class="main">
+
+            <section class="section" id="profil" aria-labelledby="judul-profil">
+                <h2 class="section__title" id="judul-profil">Profil Saya</h2>
+                <article class="card">
+                    <h3 class="card__title">Perkenalan</h3>
+                    <p class="card__text">
+                        Hai! Saya Gracia Meilanie Sinaga, mahasiswi Ilmu Komputer di Universitas
+                        Negeri Medan. Di sini saya belajar berbagai hal mulai dari pemrograman,
+                        pembuatan website, sampai database.
+                    </p>
+                    <p class="card__text card__text--muted">
+                        Halaman ini saya buat sebagai portofolio sekaligus tempat merekam apa saja
+                        yang sudah saya pelajari selama kuliah.
+                    </p>
+                </article>
+            </section>
+
+            <section class="section" id="pendidikan" aria-labelledby="judul-pendidikan">
+                <h2 class="section__title" id="judul-pendidikan">Pendidikan</h2>
+
+                <!-- Grid bersarang: dua kartu berdampingan -->
+                <div class="card-grid">
+                    <article class="card">
+                        <p class="card__eyebrow">2025 — sekarang</p>
+                        <h3 class="card__title">Universitas Negeri Medan</h3>
+                        <p class="card__text">
+                            Mahasiswi jurusan S1 Ilmu Komputer. Menjalani kehidupan perkuliahan sambil
+                            belajar, mengerjakan tugas, dan berusaha memahami kode-kode yang rumit.
+                            Masih banyak belajar, masih sering bingung, tapi tetap dikerjakan sampai
+                            selesai.
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <p class="card__eyebrow">2023 — 2025</p>
+                        <h3 class="card__title">SMA Negeri 3 Tebing Tinggi</h3>
+                        <p class="card__text">
+                            Alumni SMA Negeri 3 Tebing Tinggi, jurusan IPA. Masa di sini yang membuat
+                            saya terbiasa dengan pelajaran berbasis logika dan angka.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section" id="hobi" aria-labelledby="judul-hobi">
+                <h2 class="section__title" id="judul-hobi">Hobi &amp; Minat</h2>
+                <p class="section__lead">Di luar kuliah, biasanya saya melakukan ini:</p>
+
+                <div class="card-grid card-grid--tiga">
+                    <!-- Flexbox #4: isi kartu hobi -->
+                    <article class="hobby-card">
+                        <span class="hobby-card__icon" aria-hidden="true">&#128214;</span>
+                        <div class="hobby-card__body">
+                            <h3 class="hobby-card__title">Membaca Novel</h3>
+                            <p class="hobby-card__text">Terutama novel bertema fantasy.</p>
+                        </div>
+                    </article>
+
+                    <article class="hobby-card">
+                        <span class="hobby-card__icon" aria-hidden="true">&#127916;</span>
+                        <div class="hobby-card__body">
+                            <h3 class="hobby-card__title">Menonton Dracin</h3>
+                            <p class="hobby-card__text">Drama China, biasanya satu episode jadi lima.</p>
+                        </div>
+                    </article>
+
+                    <article class="hobby-card">
+                        <span class="hobby-card__icon" aria-hidden="true">&#128132;</span>
+                        <div class="hobby-card__body">
+                            <h3 class="hobby-card__title">Makeup Tengah Malam</h3>
+                            <p class="hobby-card__text">Dandan penuh padahal tidak ke mana-mana.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section" id="kontak" aria-labelledby="judul-kontak">
+                <h2 class="section__title" id="judul-kontak">Kontak</h2>
+                <p class="section__lead">
+                    Kalau ada yang mau ditanyakan, didiskusikan, atau sekadar mau menyapa,
+                    boleh banget hubungi saya.
+                </p>
+
+                <form class="form" action="#" method="post">
+                    <!-- Flexbox #5: baris field berdampingan -->
+                    <div class="form__row">
+                        <div class="form__field">
+                            <label class="form__label" for="nama">Nama Lengkap</label>
+                            <input class="form__input" type="text" id="nama" name="nama" placeholder="Nama kamu"
+                                required>
+                        </div>
+                        <div class="form__field">
+                            <label class="form__label" for="email">Email</label>
+                            <input class="form__input" type="email" id="email" name="email" placeholder="nama@email.com"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form__field">
+                        <label class="form__label" for="pesan">Pesan</label>
+                        <textarea class="form__input form__input--area" id="pesan" name="pesan" rows="5"
+                            placeholder="Tulis pesanmu di sini..." required></textarea>
+                    </div>
+
+                    <div class="form__actions">
+                        <button class="button button--utama" type="submit">Kirim Pesan</button>
+                        <button class="button button--sekunder" type="reset">Bersihkan</button>
+                    </div>
+                </form>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ===== FOOTER (Flexbox) ===== -->
+    <footer class="site-footer">
+        <div class="site-footer__inner">
+            <p class="site-footer__copy">&copy; 2026 cia meilanie. Seluruh hak cipta dilindungi.</p>
+            <ul class="site-footer__links">
+                <li><a class="site-footer__link" href="#profil">Kembali ke atas</a></li>
+                <li><a class="site-footer__link" href="#kontak">Kontak</a></li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+
+</html>

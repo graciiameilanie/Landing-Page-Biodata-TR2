@@ -1,0 +1,531 @@
+/* =========================================================
+   Portofolio Gracia Meilanie — Tugas Rutin 2
+   CSS Layouting: Grid + Flexbox
+   Konvensi penamaan: BEM (block__element--modifier) & kebab-case
+   ========================================================= */
+
+/* ---------- 1. CSS VARIABLES (wajib min. 5) ---------- */
+:root {
+    /* warna */
+    --warna-latar: #f7f5fb;
+    --warna-permukaan: #ffffff;
+    --warna-teks: #2e2a38;
+    --warna-teks-samar: #7a7189;
+    --warna-aksen: #9b8bc4;
+    --warna-aksen-lembut: #ece7f7;
+    --warna-garis: #e3ddf0;
+
+    /* tipografi */
+    --font-judul: "Georgia", "Cambria", serif;
+    --font-teks: "Segoe UI", "Calibri", Arial, sans-serif;
+
+    /* jarak & bentuk */
+    --jarak-kecil: 0.75rem;
+    --jarak-sedang: 1.5rem;
+    --jarak-besar: 2.5rem;
+    --radius: 14px;
+    --bayangan: 0 6px 20px rgba(35, 32, 28, 0.08);
+    --lebar-maks: 1120px;
+}
+
+/* ---------- 2. RESET & BOX-SIZING GLOBAL ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+figure,
+form {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-teks);
+    color: var(--warna-teks);
+    background-color: var(--warna-latar);
+    line-height: 1.65;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ---------- 3. HEADER & NAVIGASI (Flexbox) ---------- */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--warna-permukaan);
+    border-bottom: 1px solid var(--warna-garis);
+}
+
+.site-header__inner {
+    display: flex;
+    /* FLEXBOX komponen 1 */
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--jarak-kecil);
+    max-width: var(--lebar-maks);
+    margin: 0 auto;
+    padding: var(--jarak-kecil) var(--jarak-sedang);
+}
+
+.site-header__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--jarak-kecil);
+}
+
+.site-header__brand-mark {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--warna-aksen);
+    color: #ffffff;
+    font-family: var(--font-judul);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.site-header__brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.site-header__name {
+    font-family: var(--font-judul);
+    font-size: 1.05rem;
+}
+
+.site-header__tagline {
+    color: var(--warna-teks-samar);
+    font-size: 0.8rem;
+}
+
+.nav__list {
+    display: flex;
+    /* FLEXBOX komponen 2 */
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.nav__link {
+    display: inline-block;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    color: var(--warna-teks-samar);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav__link:hover,
+.nav__link:focus-visible {
+    background-color: var(--warna-aksen-lembut);
+    color: var(--warna-aksen);
+}
+
+.nav__link--active {
+    background-color: var(--warna-aksen);
+    color: #ffffff;
+}
+
+.nav__link--active:hover {
+    background-color: var(--warna-aksen);
+    color: #ffffff;
+}
+
+/* ---------- 4. LAYOUT UTAMA (CSS GRID) ---------- */
+.layout {
+    display: grid;
+    /* GRID struktur utama */
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: var(--jarak-besar);
+    align-items: start;
+    max-width: var(--lebar-maks);
+    margin: 0 auto;
+    padding: var(--jarak-besar) var(--jarak-sedang);
+}
+
+/* ---------- 5. SIDEBAR ---------- */
+.sidebar {
+    position: sticky;
+    top: 96px;
+    display: grid;
+    gap: var(--jarak-sedang);
+}
+
+.profile-card {
+    background-color: var(--warna-permukaan);
+    border: 1px solid var(--warna-garis);
+    border-radius: var(--radius);
+    box-shadow: var(--bayangan);
+    padding: var(--jarak-sedang);
+    text-align: center;
+}
+
+.profile-card__photo {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto var(--jarak-kecil);
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--warna-aksen-lembut);
+}
+
+.profile-card__name {
+    font-family: var(--font-judul);
+    font-size: 1.15rem;
+    line-height: 1.3;
+}
+
+.profile-card__role {
+    color: var(--warna-teks-samar);
+    font-size: 0.88rem;
+    margin-bottom: var(--jarak-kecil);
+}
+
+.meta-list {
+    display: grid;
+    gap: 0.4rem;
+    border-top: 1px solid var(--warna-garis);
+    padding-top: var(--jarak-kecil);
+}
+
+.meta-list__item {
+    display: flex;
+    /* FLEXBOX komponen 3 */
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--jarak-kecil);
+    font-size: 0.88rem;
+}
+
+.meta-list__label {
+    color: var(--warna-teks-samar);
+}
+
+.meta-list__value {
+    font-weight: 600;
+}
+
+.sidebar__block {
+    background-color: var(--warna-permukaan);
+    border: 1px solid var(--warna-garis);
+    border-radius: var(--radius);
+    box-shadow: var(--bayangan);
+    padding: var(--jarak-sedang);
+}
+
+.sidebar__title {
+    font-family: var(--font-judul);
+    font-size: 1rem;
+    margin-bottom: var(--jarak-kecil);
+}
+
+.tag-list {
+    display: flex;
+    /* FLEXBOX komponen 4 */
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.tag-list__item {
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    background-color: var(--warna-aksen-lembut);
+    color: var(--warna-aksen);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* ---------- 6. KONTEN UTAMA ---------- */
+.main {
+    display: grid;
+    gap: var(--jarak-besar);
+}
+
+.section__title {
+    font-family: var(--font-judul);
+    font-size: 1.6rem;
+    margin-bottom: var(--jarak-kecil);
+}
+
+.section__lead {
+    color: var(--warna-teks-samar);
+    margin-bottom: var(--jarak-sedang);
+    max-width: 60ch;
+}
+
+.card-grid {
+    display: grid;
+    /* GRID bersarang */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--jarak-sedang);
+}
+
+.card-grid--tiga {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.card {
+    background-color: var(--warna-permukaan);
+    border: 1px solid var(--warna-garis);
+    border-radius: var(--radius);
+    box-shadow: var(--bayangan);
+    padding: var(--jarak-sedang);
+}
+
+.card__eyebrow {
+    color: var(--warna-aksen);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.card__title {
+    font-family: var(--font-judul);
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem;
+}
+
+.card__text+.card__text {
+    margin-top: var(--jarak-kecil);
+}
+
+.card__text--muted {
+    color: var(--warna-teks-samar);
+    font-size: 0.93rem;
+}
+
+/* kartu hobi */
+.hobby-card {
+    display: flex;
+    /* FLEXBOX komponen 5 */
+    align-items: flex-start;
+    gap: var(--jarak-kecil);
+    background-color: var(--warna-permukaan);
+    border: 1px solid var(--warna-garis);
+    border-radius: var(--radius);
+    box-shadow: var(--bayangan);
+    padding: var(--jarak-sedang);
+}
+
+.hobby-card__icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--warna-aksen-lembut);
+    font-size: 1.25rem;
+}
+
+.hobby-card__title {
+    font-family: var(--font-judul);
+    font-size: 1.02rem;
+}
+
+.hobby-card__text {
+    color: var(--warna-teks-samar);
+    font-size: 0.9rem;
+}
+
+/* ---------- 7. FORM KONTAK ---------- */
+.form {
+    display: grid;
+    gap: var(--jarak-sedang);
+    background-color: var(--warna-permukaan);
+    border: 1px solid var(--warna-garis);
+    border-radius: var(--radius);
+    box-shadow: var(--bayangan);
+    padding: var(--jarak-sedang);
+}
+
+.form__row {
+    display: flex;
+    /* FLEXBOX komponen 6 */
+    flex-wrap: wrap;
+    gap: var(--jarak-sedang);
+}
+
+.form__row .form__field {
+    flex: 1 1 220px;
+}
+
+.form__field {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.form__label {
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--warna-teks-samar);
+}
+
+.form__input {
+    width: 100%;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid var(--warna-garis);
+    border-radius: 10px;
+    background-color: var(--warna-latar);
+    color: var(--warna-teks);
+    font-family: inherit;
+    font-size: 0.95rem;
+}
+
+.form__input:focus-visible {
+    outline: 2px solid var(--warna-aksen);
+    outline-offset: 1px;
+}
+
+.form__input--area {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form__actions {
+    display: flex;
+    /* FLEXBOX komponen 7 */
+    flex-wrap: wrap;
+    gap: var(--jarak-kecil);
+}
+
+.button {
+    padding: 0.6rem 1.4rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.93rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.button:hover {
+    opacity: 0.88;
+}
+
+.button--utama {
+    background-color: var(--warna-aksen);
+    color: #ffffff;
+}
+
+.button--sekunder {
+    background-color: transparent;
+    border-color: var(--warna-garis);
+    color: var(--warna-teks-samar);
+}
+
+/* ---------- 8. FOOTER ---------- */
+.site-footer {
+    background-color: var(--warna-permukaan);
+    border-top: 1px solid var(--warna-garis);
+}
+
+.site-footer__inner {
+    display: flex;
+    /* FLEXBOX komponen 8 */
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--jarak-kecil);
+    max-width: var(--lebar-maks);
+    margin: 0 auto;
+    padding: var(--jarak-sedang);
+    font-size: 0.87rem;
+    color: var(--warna-teks-samar);
+}
+
+.site-footer__links {
+    display: flex;
+    gap: var(--jarak-sedang);
+}
+
+.site-footer__link:hover {
+    color: var(--warna-aksen);
+}
+
+/* ---------- 9. RESPONSIF ---------- */
+@media (max-width: 900px) {
+    .layout {
+        grid-template-columns: minmax(0, 1fr);
+        /* sidebar turun ke bawah */
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    .card-grid,
+    .card-grid--tiga {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+    :root {
+        --jarak-besar: 1.75rem;
+    }
+
+    .site-header__inner {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .nav__list {
+        justify-content: center;
+    }
+}
+
+/* ---------- 10. BONUS: DARK MODE ---------- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --warna-latar: #1a1722;
+        --warna-permukaan: #242030;
+        --warna-teks: #f0edf7;
+        --warna-teks-samar: #a89fc0;
+        --warna-aksen: #c4b5e8;
+        --warna-aksen-lembut: #362f47;
+        --warna-garis: #372f47;
+        --bayangan: 0 6px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .site-header__brand-mark,
+    .nav__link--active,
+    .button--utama {
+        color: #16130f;
+        /* teks gelap di atas aksen terang */
+    }
+
+    .profile-card__photo {
+        border-color: var(--warna-aksen-lembut);
+    }
+}
